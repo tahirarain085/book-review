@@ -15,7 +15,11 @@ def book_create(request):
             return redirect("book-create ")
     else:
         
-        form = BookForm(request.POST)
+        form = BookForm()
 
 
     return render(request,'book/book_form.html',{'form':form})
+
+def book_list(request):
+    books = Book.objects.all().order_by('-created_at')
+    return render(request,'book/book_list.html',{"books":books})
