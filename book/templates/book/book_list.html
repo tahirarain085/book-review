@@ -23,11 +23,12 @@
                     <p><strong>Genre:</strong> <span class="badge bg-info">{{ book.genre }}</span></p>
                     <p><strong>ISBN:</strong> {{ book.isbn }}</p>
                     <p><strong>Rating:</strong> ⭐ {{ book.average_rating }}</p>
-                    <button class="btn btn-primary">View More </button>
+                    <div class="d-flex justify-content-beteen align-items-center">
+                        <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary">View Details</a>
+                    </div> 
+                
                 </div>
-                {% comment %} <div class="card-footer text-center">
-                    <a href="{% url 'book-detail' book.pk %}" class="btn btn-primary">View Details</a>
-                </div> {% endcomment %}
+                
             </div>
         </div>
         {% empty %}
