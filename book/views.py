@@ -35,7 +35,7 @@ def book_update(request,pk):
         if form.is_valid():
             form.save()
             messages.success(request,"Book Updated Successfully")
-            return redirect("book-detail",pk=book.pk)
+            return redirect("book-detail", pk = book.pk)
     else:
         form = BookForm(instance=book)
 
