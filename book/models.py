@@ -6,9 +6,9 @@ from django.urls import reverse
 class Book(models.Model):
 
     GENRE_CHOICES = [
-        ('Fiction','FICTION'),
-        ('Non-fiction','NON-FICTION'),
-        ('Technology','TECHNOLOGY'),
+        ('fiction','FICTION'),
+        ('non-fiction','NON-FICTION'),
+        ('technology','TECHNOLOGY'),
     ]
 
     title = models.CharField(max_length=200)

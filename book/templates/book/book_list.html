@@ -9,6 +9,18 @@
 <body>
 
 {% block content %}
+<div class="container">
+    <!-- Filter Buttons -->
+    <div class="row mb-4">
+        <div class="col">
+            <div class="btn-group">
+                <a href="{% url 'book-list' %}" class="btn btn-outline-primary {% if not request.GET.genre %}active{% endif %}">All</a>
+                <a href="?genre=fiction" class="btn btn-outline-primary {% if request.GET.genre == 'fiction' %}active{% endif %}">Fiction</a>
+                <a href="?genre=non-fiction" class="btn btn-outline-primary {% if request.GET.genre == 'non-fiction' %}active{% endif %}">Non-Fiction</a>
+                <a href="?genre=technology" class="btn btn-outline-primary {% if request.GET.genre == 'technology' %}active{% endif %}">Technology</a>
+            </div>
+        </div>
+    </div>
 <div class="container mt-5">
     <h2 class="text-center mb-4">📚 Book Collection</h2>
     <div class="row">

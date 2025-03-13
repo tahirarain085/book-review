@@ -12,7 +12,7 @@ def book_create(request):
         if form.is_valid():
             form.save()
             messages.success(request,"Book Created Successfully")
-            return redirect("book-create ")
+            return redirect("book-list")
     else:
         
         form = BookForm()
@@ -21,7 +21,12 @@ def book_create(request):
     return render(request,'book/book_form.html',{'form':form})
 
 def book_list(request):
-    books = Book.objects.all().order_by('-created_at')
+    genre = request.GET.get('genre')
+    if genre:
+        books = Book.objects.filter(genre=genre).order_by('-created_at')
+    else:
+
+        books = Book.objects.all().order_by('-created_at')
     return render(request,'book/book_list.html',{"books":books})
 
 def book_deatil(request,pk):
@@ -35,8 +40,18 @@ def book_update(request,pk):
         if form.is_valid():
             form.save()
             messages.success(request,"Book Updated Successfully")
-            return redirect("book-detail", pk = book.pk)
+            return redirect("book-list")
     else:
         form = BookForm(instance=book)
 
     return render(request,'book/book_form.html',{'form':form})
+def book_delete(request,pk):
+    book = Book.objects.get(pk=pk)
+    book.delete()
+    messages.success(request,"Book Deleted Successfully!..")
+    return redirect('book-list')
+
+    
+
+
+    
